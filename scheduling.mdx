@@ -1,0 +1,149 @@
+---
+title: Scheduling
+description: Master campaign scheduling and automation in GetFramework
+---
+
+## Campaign Scheduling
+
+GetFramework's intelligent scheduling system helps you optimize content delivery across multiple channels and time zones. Our AI analyzes engagement patterns to suggest optimal posting times for maximum reach.
+
+<Callout kind="tip">Scheduling campaigns in advance ensures consistent brand presence and frees up your team for strategic work.</Callout>
+
+<Steps>
+  <Step title="Create a Campaign" icon="plus">
+    Start by selecting a template and defining your target audience and channels.
+  </Step>
+  <Step title="Set Schedule" icon="calendar">
+    Choose between one-time posts, recurring schedules, or AI-optimized timing.
+    
+    <CodeGroup tabs="JavaScript,Python">
+      ```javascript
+// Schedule a one-time campaign
+await client.campaigns.schedule({
+  content: 'New product announcement',
+  channels: ['facebook', 'twitter'],
+  schedule: {
+    type: 'one-time',
+    datetime: '2024-10-20T14:00:00Z'
+  }
+});
+```
+      ```python
+# Create a recurring schedule
+schedule = client.schedules.create({
+    name: 'Weekly Newsletter',
+    frequency: 'weekly',
+    day_of_week: 'monday',
+    time: '09:00',
+    timezone: 'America/New_York'
+})
+```
+    </CodeGroup>
+  </Step>
+  <Step title="Review and Publish" icon="check-circle">
+    Preview your scheduled content and publish it to go live at the specified time.
+  </Step>
+</Steps>
+
+<Tabs>
+  <Tab title="One-Time Campaigns" icon="clock">
+    Perfect for product launches, announcements, or time-sensitive promotions.
+    
+    <Expandable title="Advanced Options" default-open="false">
+      - Time zone targeting
+      - A/B testing variants
+      - Performance tracking
+    </Expandable>
+  </Tab>
+  <Tab title="Recurring Schedules" icon="refresh-cw">
+    Set up automated posting for consistent brand presence across social media and email.
+    
+    <Expandable title="Schedule Types" default-open="false">
+      - Daily posts at optimal times
+      - Weekly content calendars
+      - Monthly newsletters
+      - Seasonal campaigns
+    </Expandable>
+  </Tab>
+  <Tab title="AI-Optimized" icon="sparkles">
+    Let GetFramework analyze your audience data to automatically schedule posts for maximum engagement.
+    
+    <Callout kind="info">AI optimization considers factors like audience demographics, historical performance, and current trends.</Callout>
+  </Tab>
+</Tabs>
+
+## Multi-Location Scheduling
+
+For franchises with multiple locations, GetFramework supports coordinated scheduling that respects local time zones and market conditions.
+
+<Columns cols={2}>
+  <Card title="Central Control" icon="settings" href="#">
+    Set global schedules from headquarters while allowing local customization.
+  </Card>
+  <Card title="Local Adaptation" icon="map-pin" href="#">
+    Each location can adjust timing based on their specific market needs.
+  </Card>
+</Columns>
+
+<Expandable title="Location-Based Scheduling" default-open="false">
+  ```javascript
+// Schedule content for multiple locations
+await client.campaigns.schedule({
+  content: 'Local promotion',
+  locations: [
+    { id: 'store-nyc', timezone: 'America/New_York', offset: 0 },
+    { id: 'store-la', timezone: 'America/Los_Angeles', offset: -3 }
+  ],
+  schedule: {
+    type: 'optimized',
+    baseTime: '14:00'
+  }
+});
+```
+</Expandable>
+
+## Performance Analytics
+
+Track the success of your scheduled campaigns with detailed analytics and insights.
+
+| Metric | Description | Example |
+|--------|-------------|---------|
+| Reach | Total unique viewers | 10,500 |
+| Engagement | Likes, shares, comments | 2.3% |
+| Click-through Rate | Link clicks | 1.8% |
+| Conversion Rate | Goal completions | 0.5% |
+
+<ExpandableGroup>
+  <Expandable title="Real-Time Monitoring" default-open="false">
+    Monitor campaign performance as it happens with live dashboards and alerts.
+  </Expandable>
+  <Expandable title="A/B Testing" default-open="false">
+    Test different posting times and content variations to optimize performance.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="success">Pro tip: Use GetFramework's AI insights to automatically adjust future schedules based on past performance.</Callout>
+
+## Best Practices
+
+<Steps>
+  <Step title="Plan Ahead" icon="target">
+    Create a content calendar 2-4 weeks in advance for consistent posting.
+  </Step>
+  <Step title="Test Timing" icon="clock">
+    Experiment with different posting times to find what works best for your audience.
+  </Step>
+  <Step title="Monitor Results" icon="bar-chart">
+    Regularly review analytics to refine your scheduling strategy.
+  </Step>
+</Steps>
+
+## Troubleshooting Common Issues
+
+- **Posts not publishing**: Check time zone settings and ensure the account has necessary permissions
+- **Inconsistent timing**: Verify that your system's clock is synchronized
+- **Low engagement**: Consider adjusting posting times or content types based on analytics
+
+<Expandable title="Schedule Conflicts" default-open="false">
+  GetFramework automatically detects and resolves scheduling conflicts. If two campaigns are scheduled for the same time, the system prioritizes based on campaign importance and adjusts timing as needed.
+</Expandable>

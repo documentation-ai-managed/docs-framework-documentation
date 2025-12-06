@@ -1,0 +1,168 @@
+---
+title: Templates
+description: Explore GetFramework's template library and customization options
+---
+
+## Template Library
+
+GetFramework offers a comprehensive collection of professionally designed templates for all your marketing needs. From social media posts to email newsletters, our templates are fully customizable and optimized for engagement.
+
+<Callout kind="info">All templates are mobile-responsive and follow current design best practices for maximum impact.</Callout>
+
+<Columns cols={3}>
+  <Card title="Social Media" icon="share-2" href="#social-templates">
+    Instagram posts, Facebook updates, Twitter threads, and LinkedIn articles.
+  </Card>
+  <Card title="Email Marketing" icon="mail" href="#email-templates">
+    Newsletters, promotional emails, and automated sequences.
+  </Card>
+  <Card title="Print Materials" icon="file-text" href="#print-templates">
+    Flyers, brochures, and business cards for offline marketing.
+  </Card>
+</Columns>
+
+<Tabs>
+  <Tab title="Social Media Templates" icon="share-2">
+    Choose from hundreds of pre-designed social media templates.
+    
+    <Expandable title="Popular Categories" default-open="true">
+      - Product announcements
+      - Event promotions
+      - User-generated content showcases
+      - Educational content
+      - Behind-the-scenes posts
+    </Expandable>
+    
+    <CodeGroup tabs="JavaScript,Python">
+      ```javascript
+// Create a social media post from template
+await client.posts.create({
+  template: 'product-announcement',
+  content: {
+    productName: 'New Coffee Blend',
+    imageUrl: 'https://example.com/product.jpg',
+    description: 'Try our latest seasonal blend!'
+  },
+  platforms: ['instagram', 'facebook']
+});
+```
+      ```python
+# Customize an email template
+template = client.templates.get('newsletter-basic')
+template.customize({
+    'header_color': '#1c1c1c',
+    'font_family': 'Arial',
+    'logo_url': 'https://example.com/logo.png'
+})
+```
+    </CodeGroup>
+  </Tab>
+  <Tab title="Email Templates" icon="mail">
+    Professional email templates for every occasion.
+    
+    <Expandable title="Email Types" default-open="false">
+      - Welcome sequences
+      - Product updates
+      - Promotional campaigns
+      - Customer surveys
+      - Re-engagement emails
+    </Expandable>
+    
+    <Steps>
+      <Step title="Select Template" icon="search">
+        Browse our library or search by category and style.
+      </Step>
+      <Step title="Customize Content" icon="edit">
+        Edit text, images, and branding to match your needs.
+      </Step>
+      <Step title="Test and Send" icon="send">
+        Preview on different devices and send to your list.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Template Customization
+
+Every template is fully customizable to match your brand identity and messaging.
+
+<ExpandableGroup>
+  <Expandable title="Visual Customization" default-open="false">
+    Change colors, fonts, logos, and images to perfectly match your brand guidelines.
+  </Expandable>
+  <Expandable title="Content Personalization" default-open="false">
+    Use dynamic fields to personalize content for different audiences or locations.
+  </Expandable>
+  <Expandable title="Responsive Design" default-open="false">
+    All templates automatically adapt to different screen sizes and devices.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="tip">Create custom template categories to organize your most-used designs for quick access.</Callout>
+
+## Template Categories
+
+| Category | Templates | Use Cases |
+|----------|-----------|-----------|
+| Social Media | 200+ | Posts, stories, ads |
+| Email | 150+ | Newsletters, promotions |
+| Print | 75+ | Flyers, business cards |
+| Web | 50+ | Landing pages, banners |
+| Video | 25+ | Social video content |
+
+<Steps>
+  <Step title="Browse Categories" icon="folder">
+    Navigate to the Templates section and explore by category.
+  </Step>
+  <Step title="Preview Templates" icon="eye">
+    Click on any template to see a live preview and customization options.
+  </Step>
+  <Step title="Save Favorites" icon="bookmark">
+    Mark frequently used templates as favorites for quick access.
+  </Step>
+</Steps>
+
+## Advanced Features
+
+<Expandable title="Template Variables" default-open="false">
+  Use variables to create dynamic content that adapts to different contexts.
+  
+  ```javascript
+// Example template with variables
+const template = {
+  content: 'Welcome to {store_name}! Check out our {product_category} specials.',
+  variables: {
+    store_name: 'Downtown Location',
+    product_category: 'coffee'
+  }
+};
+```
+</Expandable>
+
+<Callout kind="success">Pro users can create custom templates from scratch using our drag-and-drop editor.</Callout>
+
+## Best Practices
+
+<ExpandableGroup>
+  <Expandable title="Brand Consistency" default-open="false">
+    Ensure all templates use consistent branding elements like colors, fonts, and logos.
+  </Expandable>
+  <Expandable title="Mobile Optimization" default-open="false">
+    Always test templates on mobile devices to ensure they display correctly.
+  </Expandable>
+  <Expandable title="A/B Testing" default-open="false">
+    Use different template variations to test what resonates best with your audience.
+  </Expandable>
+</ExpandableGroup>
+
+## Template Management
+
+Organize and manage your templates efficiently with our advanced management tools.
+
+- **Version Control**: Track changes and revert to previous versions
+- **Team Collaboration**: Share templates with team members and control editing permissions
+- **Performance Tracking**: See which templates perform best and get usage analytics
+
+<Expandable title="Bulk Operations" default-open="false">
+  Apply changes to multiple templates at once, such as updating brand colors or logos across your entire library.
+</Expandable>

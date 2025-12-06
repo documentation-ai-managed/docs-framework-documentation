@@ -1,0 +1,93 @@
+---
+title: Introduction
+description: Overview of GetFramework and its core capabilities
+---
+
+## Getting Started with GetFramework
+
+GetFramework empowers franchises and distributed teams to scale their marketing efforts with confidence using AI-powered tools, professional templates, and intelligent scheduling. Whether you're managing multiple locations or coordinating remote teams, GetFramework provides the unified platform you need to create consistent, effective marketing campaigns.
+
+<Columns cols={3}>
+  <Card title="AI-Powered Tools" icon="zap" href="ai-tools">
+    Leverage advanced AI to generate content, analyze performance, and optimize your marketing strategies.
+  </Card>
+  <Card title="Professional Templates" icon="file-text" href="templates">
+    Access a comprehensive library of customizable templates for all your marketing needs.
+  </Card>
+  <Card title="Smart Scheduling" icon="calendar" href="scheduling">
+    Automate your content distribution and ensure consistent brand messaging across all channels.
+  </Card>
+</Columns>
+
+## Key Features
+
+GetFramework integrates seamlessly with your existing workflows, providing real-time insights and automated scheduling that adapts to your team's needs. Our platform supports multiple franchises under a single dashboard, making it easy to maintain brand consistency while allowing local customization.
+
+<Tabs>
+  <Tab title="For Franchises" icon="users">
+    Manage multiple locations with centralized control and local flexibility. Create brand guidelines that ensure consistency across all marketing materials while allowing individual franchisees to customize content for their local markets.
+    
+    <Callout kind="info">Franchise owners can set up approval workflows to maintain quality standards across all locations.</Callout>
+  </Tab>
+  <Tab title="For Teams" icon="user">
+    Distributed teams can collaborate in real-time with shared templates, automated scheduling, and integrated feedback systems. Our AI tools help identify the best times to post content and suggest optimizations based on performance data.
+    
+    <CodeGroup tabs="JavaScript,Python">
+      ```javascript
+const client = new GetFramework({
+  apiKey: process.env.GETFRAMEWORK_API_KEY
+});
+
+// Schedule a campaign
+await client.campaigns.schedule({
+  template: 'social-media-post',
+  schedule: '2024-10-15T10:00:00Z',
+  locations: ['store-1', 'store-2']
+});
+```
+      ```python
+from getframework import Client
+
+client = Client(api_key=os.getenv('GETFRAMEWORK_API_KEY'))
+
+# Create a template
+campaign = client.campaigns.create(
+    template_id='newsletter',
+    content={'headline': 'New Product Launch'}
+)
+```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+<Expandable title="Platform Benefits" default-open="false">
+  <Steps>
+    <Step title="Centralized Management" icon="settings">
+      Manage all your marketing from one dashboard, with real-time analytics and reporting.
+    </Step>
+    <Step title="AI Optimization" icon="sparkles">
+      Our AI analyzes your content performance and suggests improvements to maximize engagement.
+    </Step>
+    <Step title="Automated Scheduling" icon="clock">
+      Set up recurring campaigns that automatically adapt to optimal posting times.
+    </Step>
+  </Steps>
+</Expandable>
+
+<Callout kind="tip">Get started today by connecting your social media accounts and exploring our template library.</Callout>
+
+## Next Steps
+
+Ready to transform your marketing workflow? Follow our quick setup guide to get your first campaign running in minutes.
+
+<ExpandableGroup>
+  <Expandable title="Quick Setup Guide" default-open="true">
+    1. Sign up for a GetFramework account
+    2. Connect your social media platforms
+    3. Choose a template and customize it
+    4. Schedule your first campaign
+  </Expandable>
+  <Expandable title="Advanced Features" default-open="false">
+    Explore AI content generation, multi-location scheduling, and performance analytics.
+  </Expandable>
+</ExpandableGroup>

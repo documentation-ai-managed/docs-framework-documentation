@@ -1,0 +1,234 @@
+---
+title: API Integration
+description: Integrate GetFramework with your existing systems and workflows
+---
+
+## API Overview
+
+GetFramework's REST API allows you to integrate our marketing platform with your existing systems, enabling seamless automation and data synchronization.
+
+<Callout kind="info">Our API follows RESTful principles and uses JSON for all data exchange.</Callout>
+
+<Steps>
+  <Step title="Get API Access" icon="key">
+    Sign up for a developer account and obtain your API credentials.
+  </Step>
+  <Step title="Choose Integration Method" icon="settings">
+    Decide whether to use our SDKs, direct API calls, or webhooks.
+  </Step>
+  <Step title="Test Integration" icon="check-circle">
+    Use our sandbox environment to test your integration before going live.
+  </Step>
+</Steps>
+
+<Tabs>
+  <Tab title="SDK Integration" icon="code">
+    Use our official SDKs for faster development and built-in error handling.
+    
+    <CodeGroup tabs="JavaScript,Python,PHP">
+      ```javascript
+// Install SDK
+npm install getframework-sdk
+
+const { GetFramework } = require('getframework-sdk');
+
+const client = new GetFramework({
+  apiKey: process.env.GETFRAMEWORK_API_KEY,
+  baseUrl: 'https://api.getframework.com/v1'
+});
+
+// Create a campaign
+await client.campaigns.create({
+  name: 'Product Launch',
+  template: 'social-media-post',
+  content: { message: 'Exciting new product!' }
+});
+```
+      ```python
+# Install SDK
+pip install getframework-sdk
+
+from getframework import Client
+
+client = Client(
+    api_key=os.getenv('GETFRAMEWORK_API_KEY'),
+    base_url='https://api.getframework.com/v1'
+)
+
+# Schedule content
+client.schedules.create({
+    'name': 'Weekly Posts',
+    'frequency': 'weekly',
+    'content_type': 'social'
+})
+```
+      ```php
+// Install SDK
+composer require getframework/sdk
+
+use GetFramework\Client;
+
+$client = new Client([
+    'api_key' => getenv('GETFRAMEWORK_API_KEY'),
+    'base_url' => 'https://api.getframework.com/v1'
+]);
+
+// Get campaign analytics
+$analytics = $client->campaigns()->analytics('campaign-123');
+```
+    </CodeGroup>
+  </Tab>
+  <Tab title="Direct API" icon="terminal">
+    Make direct HTTP requests for maximum flexibility.
+    
+    <Expandable title="Authentication" default-open="true">
+      Include your API key in the Authorization header of all requests.
+      
+      ```bash
+curl -X GET \
+  https://api.getframework.com/v1/campaigns \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json"
+```
+    </Expandable>
+  </Tab>
+  <Tab title="Webhooks" icon="webhook">
+    Receive real-time notifications when events occur in your campaigns.
+    
+    <Expandable title="Webhook Events" default-open="false">
+      - Campaign published
+      - Content engagement
+      - Schedule executed
+      - Error notifications
+    </Expandable>
+  </Tab>
+</Tabs>
+
+## Common Integration Patterns
+
+<Columns cols={2}>
+  <Card title="E-commerce Sync" icon="shopping-cart" href="#ecommerce">
+    Automatically create marketing content when products are added or updated.
+  </Card>
+  <Card title="CRM Integration" icon="users" href="#crm">
+    Sync customer data and create personalized marketing campaigns.
+  </Card>
+</Columns>
+
+<Expandable title="E-commerce Integration Example" default-open="false">
+  ```javascript
+// Sync product updates to marketing campaigns
+const express = require('express');
+const app = express();
+const { GetFramework } = require('getframework-sdk');
+
+const client = new GetFramework({
+  apiKey: process.env.GETFRAMEWORK_API_KEY
+});
+
+app.post('/webhook/product-updated', async (req, res) => {
+  const { product } = req.body;
+  
+  // Create social media post
+  await client.posts.create({
+    template: 'product-update',
+    content: {
+      name: product.name,
+      image: product.image_url,
+      price: product.price
+    },
+    schedule: 'immediate'
+  });
+  
+  res.sendStatus(200);
+});
+```
+</Expandable>
+
+## Data Synchronization
+
+Keep your systems in sync with GetFramework's robust data synchronization capabilities.
+
+| Sync Type | Frequency | Use Case |
+|-----------|-----------|----------|
+| Real-time | Immediate | Critical updates |
+| Hourly | Every hour | Regular updates |
+| Daily | Once per day | Analytics reports |
+| Manual | On-demand | Bulk operations |
+
+<ExpandableGroup>
+  <Expandable title="Bidirectional Sync" default-open="false">
+    Changes in either system are automatically reflected in the other.
+  </Expandable>
+  <Expandable title="Conflict Resolution" default-open="false">
+    Automatic conflict detection and resolution based on predefined rules.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="tip">Use our sandbox environment to test integrations without affecting production data.</Callout>
+
+## Error Handling
+
+Implement robust error handling to ensure your integration remains reliable.
+
+<Steps>
+  <Step title="Handle HTTP Errors" icon="alert-circle">
+    Check response status codes and handle different error types appropriately.
+  </Step>
+  <Step title="Implement Retries" icon="refresh-cw">
+    Use exponential backoff for transient errors like rate limiting.
+  </Step>
+  <Step title="Log Errors" icon="file-text">
+    Maintain detailed logs for debugging and monitoring.
+  </Step>
+</Steps>
+
+<Expandable title="Error Response Format" default-open="false">
+  ```json
+{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Invalid campaign data",
+    "details": {
+      "field": "schedule",
+      "reason": "Invalid date format"
+    }
+  }
+}
+```
+</Expandable>
+
+## Rate Limiting and Throttling
+
+Understand and work within our API rate limits to maintain optimal performance.
+
+<Callout kind="warning">Exceeding rate limits will result in 429 responses. Implement proper throttling in your integration.</Callout>
+
+## Testing and Deployment
+
+<ExpandableGroup>
+  <Expandable title="Unit Testing" default-open="false">
+    Write comprehensive unit tests for your integration code.
+  </Expandable>
+  <Expandable title="Integration Testing" default-open="false">
+    Test end-to-end workflows in our sandbox environment.
+  </Expandable>
+  <Expandable title="Monitoring" default-open="false">
+    Set up monitoring and alerting for your production integration.
+  </Expandable>
+</ExpandableGroup>
+
+## Best Practices
+
+- Use webhooks for real-time updates instead of polling
+- Implement proper error handling and logging
+- Cache frequently accessed data to reduce API calls
+- Use batch operations for bulk data transfers
+- Keep API keys secure and rotate them regularly
+
+<Expandable title="Security Considerations" default-open="false">
+  - Never expose API keys in client-side code
+  - Use HTTPS for all API communications
+  - Implement proper authentication and authorization
+  - Regularly audit API access logs
+</Expandable>

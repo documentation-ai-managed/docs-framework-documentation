@@ -1,0 +1,124 @@
+---
+title: Authentication
+description: Learn how to authenticate with the GetFramework API
+---
+
+## API Authentication
+
+GetFramework uses API key-based authentication to secure your requests. You'll need to include your API key in the Authorization header of all API calls.
+
+<Callout kind="danger">Keep your API key secure and never expose it in client-side code or public repositories.</Callout>
+
+<Steps>
+  <Step title="Get Your API Key" icon="key">
+    Log into your GetFramework dashboard and navigate to Settings > API Keys. Generate a new key if you haven't already.
+  </Step>
+  <Step title="Include in Requests" icon="send">
+    Add the Authorization header to all API requests.
+    
+    <CodeGroup tabs="curl,JavaScript,Python">
+      ```bash
+curl -H "Authorization: Bearer YOUR_API_KEY" \
+  https://api.getframework.com/v1/campaigns
+```
+      ```javascript
+const response = await fetch('https://api.getframework.com/v1/campaigns', {
+  headers: {
+    'Authorization': `Bearer ${process.env.GETFRAMEWORK_API_KEY}`
+  }
+});
+```
+      ```python
+import requests
+
+response = requests.get(
+  'https://api.getframework.com/v1/campaigns',
+  headers={'Authorization': f'Bearer {os.getenv("GETFRAMEWORK_API_KEY")}'}
+)
+```
+    </CodeGroup>
+  </Step>
+  <Step title="Handle Errors" icon="alert-circle">
+    If authentication fails, you'll receive a 401 Unauthorized response.
+  </Step>
+</Steps>
+
+<Tabs>
+  <Tab title="Web Applications" icon="globe">
+    For web apps, store your API key in environment variables and use it server-side only.
+    
+    <Callout kind="tip">Use libraries like `dotenv` to manage environment variables securely.</Callout>
+  </Tab>
+  <Tab title="Mobile Apps" icon="smartphone">
+    For mobile applications, implement proper key storage using platform-specific secure storage mechanisms.
+    
+    <Expandable title="iOS Key Storage" default-open="false">
+      Use Keychain Services to store sensitive data like API keys.
+      
+      ```swift
+import Security
+
+// Store API key securely
+let keychainQuery: [String: Any] = [
+  kSecClass as String: kSecClassGenericPassword,
+  kSecAttrAccount as String: "getframework_api_key",
+  kSecValueData as String: apiKey.data(using: .utf8)!
+]
+
+SecItemAdd(keychainQuery as CFDictionary, nil)
+```
+    </Expandable>
+  </Tab>
+</Tabs>
+
+## Rate Limiting
+
+GetFramework implements rate limiting to ensure fair usage. The current limits are:
+
+| Plan | Requests per Minute | Requests per Hour |
+|------|---------------------|-------------------|
+| Free | 100 | 1,000 |
+| Pro | 1,000 | 10,000 |
+| Enterprise | 10,000 | 100,000 |
+
+<Expandable title="Rate Limit Headers" default-open="false">
+  All API responses include rate limit headers:
+  - `X-RateLimit-Limit`: Maximum requests allowed
+  - `X-RateLimit-Remaining`: Remaining requests in current window
+  - `X-RateLimit-Reset`: Time when the limit resets
+</Expandable>
+
+<Callout kind="info">If you exceed rate limits, you'll receive a 429 Too Many Requests response with a `Retry-After` header.</Callout>
+
+## Best Practices
+
+<ExpandableGroup>
+  <Expandable title="Key Rotation" default-open="false">
+    Regularly rotate your API keys to maintain security. Old keys remain valid for 24 hours after generating a new one.
+  </Expandable>
+  <Expandable title="Environment Separation" default-open="false">
+    Use separate API keys for development, staging, and production environments.
+  </Expandable>
+</ExpandableGroup>
+
+## Troubleshooting
+
+Common authentication issues and solutions:
+
+- **Invalid API Key**: Verify the key is correct and hasn't expired
+- **Missing Authorization Header**: Ensure all requests include the Bearer token
+- **Rate Limit Exceeded**: Implement exponential backoff and check rate limit headers
+
+<Steps>
+  <Step title="Verify Key" icon="check-circle">
+    Check your dashboard to ensure the API key is active and correctly copied.
+  </Step>
+  <Step title="Test Request" icon="terminal">
+    Use curl to test authentication:
+    
+    ```bash
+curl -v -H "Authorization: Bearer YOUR_API_KEY" \
+  https://api.getframework.com/v1/user
+```
+  </Step>
+</Steps>

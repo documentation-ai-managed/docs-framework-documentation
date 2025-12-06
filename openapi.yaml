@@ -1,0 +1,195 @@
+openapi: '3.0.0'
+info:
+  version: 1.0.0
+  title: GetFramework API
+  license:
+    name: MIT
+servers:
+  - url: https://api.getframework.com/v1
+paths:
+  /campaigns:
+    get:
+      summary: List all marketing campaigns in the system. This endpoint provides a comprehensive view of all active and completed campaigns, allowing users to monitor performance across different marketing channels and time periods.
+      operationId: listCampaigns
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of campaigns to return (max 100)
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: Successful response with paginated campaign list
+          headers:
+            x-next:
+              description: Link to next page of results
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Campaigns'
+        default:
+          description: Unexpected error occurred during campaign retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create a new marketing campaign. This endpoint allows users to set up comprehensive marketing campaigns with customizable content, scheduling options, and multi-channel distribution across social media platforms and email lists.
+      operationId: createCampaigns
+      responses:
+        201:
+          description: Campaign successfully created and scheduled
+        default:
+          description: Unexpected error during campaign creation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /campaigns/{campaignId}:
+    get:
+      summary: Retrieve detailed information about a specific marketing campaign. This endpoint provides comprehensive campaign data including performance metrics, content details, scheduling information, and audience engagement statistics.
+      operationId: showCampaignById
+      parameters:
+        - name: campaignId
+          in: path
+          required: true
+          description: Unique identifier of the campaign to retrieve
+          schema:
+            type: string
+      responses:
+        200:
+          description: Campaign details successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Campaigns'
+        default:
+          description: Unexpected error during campaign retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /schedules:
+    get:
+      summary: Retrieve a list of all scheduled marketing activities. This endpoint enables users to view upcoming and past scheduled content, including automated posts, email campaigns, and multi-platform publishing schedules.
+      operationId: listSchedules
+      parameters:
+        - name: status
+          in: query
+          description: Filter schedules by status (active, completed, paused)
+          required: false
+          schema:
+            type: string
+      responses:
+        200:
+          description: Schedule list successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schedules'
+        default:
+          description: Unexpected error during schedule retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create a new automated scheduling rule for marketing content. This endpoint allows users to set up recurring content publication schedules with intelligent timing optimization and multi-channel distribution capabilities.
+      operationId: createSchedules
+      responses:
+        201:
+          description: Schedule successfully created and activated
+        default:
+          description: Unexpected error during schedule creation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /templates:
+    get:
+      summary: Browse available marketing content templates. This endpoint provides access to a comprehensive library of professionally designed templates for various marketing channels including social media, email, and print materials.
+      operationId: listTemplates
+      parameters:
+        - name: category
+          in: query
+          description: Filter templates by category (social, email, print)
+          required: false
+          schema:
+            type: string
+      responses:
+        200:
+          description: Template list successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Templates'
+        default:
+          description: Unexpected error during template retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Campaign:
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        status:
+          type: string
+    Campaigns:
+      type: array
+      items:
+        $ref: '#/components/schemas/Campaign'
+    Schedule:
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        frequency:
+          type: string
+    Schedules:
+      type: array
+      items:
+        $ref: '#/components/schemas/Schedule'
+    Template:
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        category:
+          type: string
+    Templates:
+      type: array
+      items:
+        $ref: '#/components/schemas/Template'
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
