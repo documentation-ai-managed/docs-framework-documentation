@@ -1,1 +1,128 @@
-"{\n  \"name\": \"GetFramework Documentation\",\n  \"initialRoute\": \"introduction\",\n  \"primaryColor\": \"#1c1c1c\",\n  \"navigation\": {\n    \"tabs\": [\n      {\n        \"tab\": \"Documentation\",\n        \"icon\": \"book\",\n        \"groups\": [\n          {\n            \"group\": \"Getting Started\",\n            \"icon\": \"rocket\",\n            \"pages\": [\n              {\n                \"title\": \"Introduction\",\n                \"path\": \"introduction\",\n                \"icon\": \"star\"\n              },\n              {\n                \"title\": \"Quick start\",\n                \"path\": \"quick-start\",\n                \"icon\": \"lucide-rocket\"\n              }\n            ]\n          },\n          {\n            \"group\": \"Design\",\n            \"icon\": \"lightbulb\",\n            \"pages\": [\n              {\n                \"title\": \"Templates\",\n                \"path\": \"editing\",\n                \"icon\": \"lucide-paintbrush-vertical\"\n              },\n              {\n                \"title\": \"Images\",\n                \"path\": \"images\",\n                \"icon\": \"image-up\"\n              },\n              {\n                \"title\": \"Suggestons\",\n                \"path\": \"suggest-a-template\",\n                \"icon\": \"lucide-message-circle\"\n              }\n            ]\n          },\n          {\n            \"group\": \"Social media & campaigns\",\n            \"icon\": \"lucide-share2\",\n            \"pages\": [\n              {\n                \"title\": \"Accounts\",\n                \"path\": \"connecting-accounts\",\n                \"icon\": \"link\"\n              },\n              {\n                \"title\": \"Sharing\",\n                \"path\": \"sharing-content\",\n                \"icon\": \"message-square-share\"\n              },\n              {\n                \"title\": \"Analytics\",\n                \"path\": \"analytics\",\n                \"icon\": \"bar-chart4\"\n              },\n              {\n                \"title\": \"Campaigns\",\n                \"path\": \"campaigns\",\n                \"icon\": \"calendar\"\n              }\n            ]\n          },\n          {\n            \"group\": \"Management\",\n            \"pages\": [\n              {\n                \"title\": \"Users\",\n                \"path\": \"add-users\",\n                \"icon\": \"circle-user\"\n              },\n              {\n                \"title\": \"Billing\",\n                \"path\": \"billing\",\n                \"icon\": \"wallet2\"\n              },\n              {\n                \"title\": \"Territories\",\n                \"path\": \"territories\",\n                \"icon\": \"building2-icon\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"tab\": \"Changelog\",\n        \"icon\": \"clock\",\n        \"pages\": [\n          {\n            \"title\": \"Release History\",\n            \"path\": \"changelog\",\n            \"icon\": \"history\"\n          }\n        ]\n      }\n    ]\n  },\n  \"logo-dark\": \"https://blob-cdn.documentation.ai/org-3b35621b-84ac-4f46-a54c-13ef46ab0f69/doc-b7c9c3a9-f17d-466e-b8ba-31e8cf79ba38/1765047636634-9xzmqni30nd-framework-white.svg?q=85&fm=auto&auto=compress%2Cformat\",\n  \"logo-light\": \"https://blob-cdn.documentation.ai/org-3b35621b-84ac-4f46-a54c-13ef46ab0f69/doc-b7c9c3a9-f17d-466e-b8ba-31e8cf79ba38/1765047659992-tvcnnppxh7k-framework-black.svg?q=85&fm=auto&auto=compress%2Cformat\",\n  \"favicon\": \"https://blob-cdn.documentation.ai/org-3b35621b-84ac-4f46-a54c-13ef46ab0f69/doc-b7c9c3a9-f17d-466e-b8ba-31e8cf79ba38/1765047722333-7gdx8vv0kl9-FAVICON-FRAMEWORK.svg?q=85&fm=auto&auto=compress%2Cformat\",\n  \"colors\": {\n    \"light\": {\n      \"brand\": \"#027782\",\n      \"heading\": \"#1a1a1a\",\n      \"text\": \"#374151\"\n    },\n    \"dark\": {\n      \"brand\": \"#85a1ff\",\n      \"heading\": \"#f2f2f2\",\n      \"text\": \"#c1c1c1\"\n    }\n  },\n  \"seo\": {\n    \"robots:index\": false,\n    \"robots:follow\": false\n  }\n}"
+{
+  "name": "GetFramework Documentation",
+  "initialRoute": "introduction",
+  "primaryColor": "#1c1c1c",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "icon": "book",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "icon": "rocket",
+            "pages": [
+              {
+                "title": "Introduction",
+                "path": "introduction",
+                "icon": "star"
+              },
+              {
+                "title": "Quick start",
+                "path": "quick-start",
+                "icon": "lucide-rocket"
+              }
+            ]
+          },
+          {
+            "group": "Design",
+            "icon": "lightbulb",
+            "pages": [
+              {
+                "title": "Templates",
+                "path": "editing",
+                "icon": "lucide-paintbrush-vertical"
+              },
+              {
+                "title": "Images",
+                "path": "images",
+                "icon": "image-up"
+              },
+              {
+                "title": "Suggestons",
+                "path": "suggest-a-template",
+                "icon": "lucide-message-circle"
+              }
+            ]
+          },
+          {
+            "group": "Social media & campaigns",
+            "icon": "lucide-share2",
+            "pages": [
+              {
+                "title": "Accounts",
+                "path": "connecting-accounts",
+                "icon": "link"
+              },
+              {
+                "title": "Sharing",
+                "path": "sharing-content",
+                "icon": "message-square-share"
+              },
+              {
+                "title": "Analytics",
+                "path": "analytics",
+                "icon": "bar-chart4"
+              },
+              {
+                "title": "Campaigns",
+                "path": "campaigns",
+                "icon": "calendar"
+              }
+            ]
+          },
+          {
+            "group": "Management",
+            "pages": [
+              {
+                "title": "Users",
+                "path": "add-users",
+                "icon": "circle-user"
+              },
+              {
+                "title": "Billing",
+                "path": "billing",
+                "icon": "wallet2"
+              },
+              {
+                "title": "Territories",
+                "path": "territories",
+                "icon": "building2-icon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Changelog",
+        "icon": "clock",
+        "pages": [
+          {
+            "title": "Release History",
+            "path": "changelog",
+            "icon": "history"
+          }
+        ]
+      }
+    ]
+  },
+  "logo-dark": "https://blob-cdn.documentation.ai/org-3b35621b-84ac-4f46-a54c-13ef46ab0f69/doc-b7c9c3a9-f17d-466e-b8ba-31e8cf79ba38/1765047636634-9xzmqni30nd-framework-white.svg?q=85&fm=auto&auto=compress%2Cformat",
+  "logo-light": "https://blob-cdn.documentation.ai/org-3b35621b-84ac-4f46-a54c-13ef46ab0f69/doc-b7c9c3a9-f17d-466e-b8ba-31e8cf79ba38/1765047659992-tvcnnppxh7k-framework-black.svg?q=85&fm=auto&auto=compress%2Cformat",
+  "favicon": "https://blob-cdn.documentation.ai/org-3b35621b-84ac-4f46-a54c-13ef46ab0f69/doc-b7c9c3a9-f17d-466e-b8ba-31e8cf79ba38/1765047722333-7gdx8vv0kl9-FAVICON-FRAMEWORK.svg?q=85&fm=auto&auto=compress%2Cformat",
+  "colors": {
+    "light": {
+      "brand": "#027782",
+      "heading": "#1a1a1a",
+      "text": "#374151"
+    },
+    "dark": {
+      "brand": "#a7ecd7",
+      "heading": "#f2f2f2",
+      "text": "#c1c1c1"
+    }
+  },
+  "seo": {
+    "robots:index": false,
+    "robots:follow": false
+  }
+}
